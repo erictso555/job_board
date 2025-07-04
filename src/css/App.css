@@ -1,0 +1,14 @@
+html, body {
+    width: 100%; /* Ensure full width */
+    height: 100%; /* Ensure full height */
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Remove any default padding */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+body {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: flex-start; /* Align items to the top */
+    background-color: #f4f4f4; /* Background color */
+}

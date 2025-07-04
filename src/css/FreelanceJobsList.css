@@ -1,0 +1,42 @@
+.job-list-container {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Background for the job list page */
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px; /* Padding around the job list */
+    width: 100%;
+}
+
+.job-list-container h1 {
+    color: #333; /* Title color */
+    text-align: center; /* Center the title */
+    margin-bottom: 20px; /* Space below title */
+}
+
+.job-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.job-list li {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px 0;
+    padding: 15px;
+    transition: transform 0.2s;
+}
+
+.job-list li:hover {
+    transform: scale(1.02);
+}
+
+h2 {
+    margin: 0;
+    color: #007BFF;
+}
+
+p {
+    margin: 5px 0;
+    color: #555;
+}

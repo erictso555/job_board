@@ -1,0 +1,65 @@
+.login-page {
+    display: flex; /* Use flexbox to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full height of the viewport */
+    margin: 0; /* Remove default margin */
+    background-color: #f0f2f5; /* Light background color */
+}
+
+.login-container {
+    max-width: 400px; /* Maximum width of the form */
+    width: 100%; /* Full width on smaller screens */
+    padding: 20px; /* Padding inside the form */
+    background-color: white; /* White background for the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.login-title {
+    text-align: center; /* Center the heading */
+    margin-bottom: 20px; /* Space below heading */
+    font-size: 24px; /* Title font size */
+    color: #333; /* Darker color for the title */
+}
+
+.login-form {
+    display: flex; /* Flex display for layout */
+    flex-direction: column; /* Vertical stacking */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Space between form elements */
+}
+
+.form-label {
+    display: block; /* Block display for label */
+    margin-bottom: 5px; /* Space below label */
+    font-weight: bold; /* Bold label */
+}
+
+.form-input {
+    width: 100%; /* Full width input */
+    padding: 10px; /* Padding inside input */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Input font size */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.login-button {
+    width: 100%; /* Full width button */
+    padding: 10px; /* Padding inside button */
+    background-color: #007BFF; /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Button font size */
+    transition: background-color 0.3s; /* Smooth color transition */
+}
+
+.login-button:hover {
+    background-color: #0056b3; /* Darker color on hover */
+}

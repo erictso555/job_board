@@ -1,0 +1,50 @@
+.navbar {
+    width: 100%;
+    background-color: #007BFF; /* Background color */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding around the nav */
+    position: fixed; /* Fix the nav to the top */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    right: 0; /* Align to the right */
+    z-index: 1000; /* Ensure it stays on top of other elements */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+}
+
+.site-title {
+    font-size: 24px; /* Font size for the title */
+    color: white; /* Set title color to white */
+    margin: 0; /* Remove default margin */
+}
+
+.site-title a{
+    font-size: 24px; /* Font size for the title */
+    color: white; /* Set title color to white */
+    margin: 0; /* Remove default margin */
+}
+
+.nav-list {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    margin-right: 10px;
+    display: flex; /* Use flexbox for horizontal layout */
+    margin-left: auto;
+}
+
+.nav-list li {
+    margin-right: 15px; /* Space between items */
+}
+
+.nav-list a {
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    padding: 8px 12px; /* Padding around links */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth background change */
+}
+
+.nav-list a:hover {
+    background-color: rgba(255, 255, 255, 0.2); 
+}
