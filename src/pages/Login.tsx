@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import '../css/Login.css';
 
-const Login: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
-    const [Username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-
+const Login: React.FC<{ onLogin: (username: string, password: string) => void}> = ({ onLogin }) => {
+    const usernameRef = useRef<HTMLInputElement>(null);
+    const passwordRef = useRef<HTMLInputElement>(null);
+    
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Add login logic here
-        onLogin(); // Call the onLogin prop
+        const username = usernameRef.current?.value || '';
+        const password = passwordRef.current?.value || '';
+
+        onLogin(username, password); // Call the onLogin prop
     };
 
     return (
@@ -17,14 +19,12 @@ const Login: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
                 <h2 className="login-title">Login</h2>
                 <form className="login-form" onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label className="form-label" htmlFor="email">Username</label>
+                        <label className="form-label" htmlFor="username">Username</label>
                         <input
                             className="form-input"
-                            type="email"
-                            id="email"
-                            value={Username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            required    
+                            ref={usernameRef}
+                            // onChange = {(e) => console.log("hi")}
+                            required  
                         />
                     </div>
                     <div className="form-group">
@@ -32,9 +32,7 @@ const Login: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
                         <input
                             className="form-input"
                             type="password"
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            ref={passwordRef}
                             required
                         />
                     </div>

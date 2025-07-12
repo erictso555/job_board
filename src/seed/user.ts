@@ -1,10 +1,15 @@
-interface User {
+export interface User {
     username: string;
     password: string;
     identity: "case_reviewer" | "case_creator";
 }
 
-const users: User[] = [
+export interface UserConfig{
+    username: string;
+    password: string;
+}
+
+export const users: User[] = [
     {
         "username": "case_creator1",
         "password": "securePassword1",
@@ -26,5 +31,3 @@ const users: User[] = [
         "identity": "case_reviewer"
     }
 ]
-
-export default users;
