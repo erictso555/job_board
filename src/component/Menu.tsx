@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import '../css/menu.css'
 
 interface MenuProps {
-    userType: 'visitor' | 'case_reviewer' | 'case_creator';
+    userType: null | 'case_reviewer' | 'case_creator';
     onLogin: () => void;
     onLogout: () => void;
 }
@@ -15,7 +14,7 @@ const Menu: React.FC<MenuProps> = ({ userType, onLogin, onLogout }) => {
                 <a href='/'>Freelance Job</a>
             </h1>
             <ul className="nav-list">
-                {userType === 'visitor' && (
+                {userType === null && (
                     <li>
                         <a href='/login' onClick={onLogin}>Login</a>
                     </li>
@@ -33,7 +32,7 @@ const Menu: React.FC<MenuProps> = ({ userType, onLogin, onLogout }) => {
                 {userType === 'case_creator' && (
                     <>
                         <li>
-                            <a>Created Jobs</a>
+                            <a href='/created-jobs'>Created Jobs</a>
                         </li>
                         <li>
                             <a onClick={onLogout}>Logout</a>

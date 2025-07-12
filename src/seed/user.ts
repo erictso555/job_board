@@ -12,22 +12,22 @@ export interface UserConfig{
 export const users: User[] = [
     {
         "username": "case_creator1",
-        "password": "securePassword1",
+        "password": "123",
         "identity": "case_creator"
     },
     {
         "username": "case_creator2",
-        "password": "securePassword2",
+        "password": "123",
         "identity": "case_creator"
     },
     {
         "username": "case_reviewer1",
-        "password": "securePassword3",
+        "password": "123",
         "identity": "case_reviewer"
     },
     {
         "username": "case_reviewer2",
-        "password": "securePassword4",
+        "password": "123",
         "identity": "case_reviewer"
     }
 ]
