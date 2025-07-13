@@ -1,4 +1,5 @@
 export interface FreelanceJob {
+    JobId: string; 
     freelance_job: string;
     requested_by: string;
     short_description: string;
@@ -10,6 +11,7 @@ export interface FreelanceJob {
 
 export const freelanceJobs: FreelanceJob[] = [
     {
+        JobId: "case1",
         freelance_job: "Logo Designer",
         requested_by: "Tech Innovations Inc.",
         short_description: "Design a sleek logo for our new tech brand.",
@@ -17,6 +19,7 @@ export const freelanceJobs: FreelanceJob[] = [
         requested_user: "case_creator1",
     },
     {
+        JobId: "case2",
         freelance_job: "Web Developer",
         requested_by: "Tech Innovations Inc.",
         short_description: "Develop a user-friendly website for our online shop.",
@@ -24,6 +27,7 @@ export const freelanceJobs: FreelanceJob[] = [
         requested_user: "case_creator1"
     },
     {
+        JobId: "case3",
         freelance_job: "Content Writer",
         requested_by: "Travel Diaries Co.",
         short_description: "Create engaging travel articles for our blog.",
@@ -31,6 +35,7 @@ export const freelanceJobs: FreelanceJob[] = [
         requested_user: "case_creator2"
     },
     {
+        JobId: "case4",
         freelance_job: "Social Media Manager",
         requested_by: "Travel Diaries Co.",
         short_description: "Manage our social media presence and campaigns.",
@@ -38,6 +43,7 @@ export const freelanceJobs: FreelanceJob[] = [
         requested_user: "case_creator2"
     },
     {
+        JobId: "case5",
         freelance_job: "SEO Specialist",
         requested_by: "Tech Innovations Inc.",
         short_description: "Optimize content to improve search engine rankings.",
@@ -45,6 +51,7 @@ export const freelanceJobs: FreelanceJob[] = [
         requested_user: "case_creator1"
     },
     {
+        JobId: "case6",
         freelance_job: "Video Editor",
         requested_by: "Travel Diaries Co.",
         short_description: "Edit promotional videos for our upcoming project.",
@@ -52,6 +59,7 @@ export const freelanceJobs: FreelanceJob[] = [
         requested_user: "case_creator2"
     },
     {
+        JobId: "case7",
         freelance_job: "Virtual Assistant",
         requested_by: "Tech Innovations Inc",
         short_description: "Assist with administrative tasks and scheduling.",
@@ -59,6 +67,7 @@ export const freelanceJobs: FreelanceJob[] = [
         requested_user: "case_creator1"
     },
     {
+        JobId: "case8",
         freelance_job: "Photographer",
         requested_by: "Travel Diaries Co.",
         short_description: "Capture moments at our upcoming corporate event.",
@@ -66,6 +75,7 @@ export const freelanceJobs: FreelanceJob[] = [
         requested_user: "case_creator2"
     },
     {
+        JobId: "case9",
         freelance_job: "Illustrator",
         requested_by: "Travel Diaries Co.",
         short_description: "Create colorful illustrations for a children’s book.",
@@ -73,6 +83,7 @@ export const freelanceJobs: FreelanceJob[] = [
         requested_user: "case_creator2"
     },
     {
+        JobId: "case10",
         freelance_job: "Copywriter",
         requested_by: "Tech Innovations Inc.",
         short_description: "Write compelling copy for our new product launch.",

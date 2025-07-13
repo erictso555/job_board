@@ -39,3 +39,27 @@ p {
     margin: 5px 0;
     color: #555;
 }
+
+.job-list-main-container {
+    display: flex;
+    flex-direction: row;
+    align-items: first baseline; 
+    justify-content: flex-start;   
+    /* top: 0px; 
+    position: sticky */
+}
+
+.job-detail-side {
+    margin-left: 32px;
+    min-width: 350px;
+    max-width: 600px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px 0;
+    padding: 15px;
+    transition: transform 0.2s;
+    align-self: center;
+    position: sticky;
+    top: 20px; /* Adjust based on your layout */
+}

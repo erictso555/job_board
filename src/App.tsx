@@ -37,8 +37,9 @@ const App: React.FC = () => {
 
     return (
         <div className="App">
-            <Menu userType={user?.identity || null} onLogin={() => {}} onLogout={handleLogout} />
-
+            <div>
+                <Menu userType={user?.identity || null} onLogin={() => {}} onLogout={handleLogout} />
+            </div>
             <Routes>
                 <Route path="/" element={<FreelanceJobsList />} />
                 <Route path="/login" element={<Login onLogin={handleLogin} />} />
@@ -50,6 +51,7 @@ const App: React.FC = () => {
                             : <div>Please log in to view your created jobs.</div>
                     }
                 />
+            <Route path="/accepted-jobs"/>
             </Routes>
             
         </div>

@@ -22,7 +22,7 @@ const Menu: React.FC<MenuProps> = ({ userType, onLogin, onLogout }) => {
                 {userType === 'case_reviewer' && (
                     <>
                         <li>
-                            <a>Accepted Jobs</a>
+                            <a href='/accepted-jobs'>Accepted Jobs</a>
                         </li>
                         <li>
                             <a onClick={onLogout}>Logout</a>

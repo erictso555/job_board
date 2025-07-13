@@ -1,7 +1,8 @@
-import React from 'react';
-import { freelanceJobs } from '../seed/freelanceJobs'
+import React, { useState } from 'react';
+import { freelanceJobs, FreelanceJob } from '../seed/freelanceJobs';
 import '../css/FreelanceJobsList.css'; 
 import { User } from '../seed/user';
+import JobDetail from '../component/JobDetail';
 
 interface FreelanceJobsListProps {
     currentUser?: User;
@@ -9,8 +10,9 @@ interface FreelanceJobsListProps {
 }
 
 const FreelanceJobsList: React.FC<FreelanceJobsListProps> = ({ currentUser, showOnlyCreated }) => {
-    let jobsToShow = freelanceJobs;
+    const [selectedJob, setSelectedJob] = useState<FreelanceJob | null>(null);
 
+    let jobsToShow = freelanceJobs;
     if (showOnlyCreated && currentUser) {
         jobsToShow = freelanceJobs.filter(
             job => job.requested_user === currentUser.username
@@ -18,21 +20,33 @@ const FreelanceJobsList: React.FC<FreelanceJobsListProps> = ({ currentUser, show
     }
 
     return (
-        <div className='job-list-container'>
-            <h1 className='job-list-container'>
-                {showOnlyCreated ? "My Created Jobs" : "Job List"}
-            </h1>
-            <ul className="job-list">
-                {jobsToShow.map((job, index) => (
-                    <li key={index}>
-                        <h2>{job.freelance_job}</h2>
-                        <p><strong>Requested by:</strong> {job.requested_by}</p>
-                        <p>{job.short_description}</p>
-                    </li>
-                ))}
-            </ul>
+    <div>
+        <div className="job-list-main-container">
+            <div className="job-list-container">
+                <h1>
+                    {showOnlyCreated ? "My Created Jobs" : "Job List"}
+                </h1>
+                <ul className="job-list">
+                    {jobsToShow.map((job, index) => (
+                        <li key={index} onClick={() => setSelectedJob(job)} style={{ cursor: "pointer" }}>
+                            <h2>{job.freelance_job}</h2>
+                            <p><strong>Requested by:</strong> {job.requested_by}</p>
+                            <p>{job.short_description}</p>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <div className="job-list-main-container">
+                <div className="job-list-container" />
+                {selectedJob && (
+                    <div className="job-detail-side">
+                        <JobDetail job={selectedJob} currentUser={currentUser} />
+                    </div>
+                )}
+            </div>
         </div>
+    </div>
     );
 };
 
-export default FreelanceJobsList;   
+export default FreelanceJobsList;
