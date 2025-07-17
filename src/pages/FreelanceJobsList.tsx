@@ -36,14 +36,14 @@ const FreelanceJobsList: React.FC<FreelanceJobsListProps> = ({ currentUser, show
                     ))}
                 </ul>
             </div>
-            <div className="job-list-main-container">
-                <div className="job-list-container" />
+            
                 {selectedJob && (
-                    <div className="job-detail-side">
-                        <JobDetail job={selectedJob} currentUser={currentUser} />
+                    <div className="job-detail-side-container">
+                        <div className="job-detail-side">
+                            <JobDetail job={selectedJob} currentUser={currentUser} />
+                        </div>
                     </div>
-                )}
-            </div>
+                )}  
         </div>
     </div>
     );

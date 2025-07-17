@@ -9,7 +9,7 @@ interface MenuProps {
 
 const Menu: React.FC<MenuProps> = ({ userType, onLogin, onLogout }) => {
     return (    
-        <nav className="navbar">
+        <div className="navbar">
             <h1 className="site-title">
                 <a href='/'>Freelance Job</a>
             </h1>
@@ -17,7 +17,7 @@ const Menu: React.FC<MenuProps> = ({ userType, onLogin, onLogout }) => {
                 {userType === null && (
                     <li>
                         <a href='/login' onClick={onLogin}>Login</a>
-                    </li>
+                    </li>   
                 )}
                 {userType === 'case_reviewer' && (
                     <>
@@ -40,8 +40,8 @@ const Menu: React.FC<MenuProps> = ({ userType, onLogin, onLogout }) => {
                     </>
                 )}
             </ul>
-        </nav>
+        </div>
     );
 };
 
-export default Menu;
+export default Menu;    

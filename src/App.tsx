@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import FreelanceJobsList from './pages/FreelanceJobsList';
 import Menu from './component/Menu';
 import  { users, User } from './seed/user';
+import './index.css'
 
 const App: React.FC = () => {
     //const [identity, setidentity] = useState<'visitor' | 'case_reviewer' | 'case_creator'>('visitor');
@@ -37,14 +38,12 @@ const App: React.FC = () => {
 
     return (
         <div className="App">
-            <div>
-                <Menu userType={user?.identity || null} onLogin={() => {}} onLogout={handleLogout} />
-            </div>
+            <Menu userType={user?.identity || null} onLogin={() => {}} onLogout={handleLogout} />
             <Routes>
                 <Route path="/" element={<FreelanceJobsList />} />
                 <Route path="/login" element={<Login onLogin={handleLogin} />} />
                 <Route
-                    path="/created-jobs"
+                    path="/created-jobs"    
                     element={
                         user
                             ? <FreelanceJobsList currentUser={user} showOnlyCreated />

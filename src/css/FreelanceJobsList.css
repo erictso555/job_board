@@ -1,16 +1,20 @@
 .job-list-container {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4; /* Background for the job list page */
-    margin: 0 auto;
+    margin: 0 auto  ;
+    padding: 10px;
     margin-top: 20px;
-    padding: 20px; /* Padding around the job list */
+    max-height: 100vh; /* Full height of the viewport */
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .job-list-container h1 {
     color: #333; /* Title color */
     text-align: center; /* Center the title */
     margin-bottom: 20px; /* Space below title */
-}
+    padding: 20px;
+}   
 
 .job-list {
     list-style-type: none;
@@ -37,16 +41,25 @@ h2 {
 
 p {
     margin: 5px 0;
-    color: #555;
+    color: #555;    
 }
 
 .job-list-main-container {
     display: flex;
-    flex-direction: row;
-    align-items: first baseline; 
+    flex-direction: row;     
     justify-content: flex-start;   
+    align-items: center;
     /* top: 0px; 
     position: sticky */
+}
+
+.job-detail-side-container {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Background for the job list page */
+    margin: 0 auto;
+    margin-top: 20px;
+    max-height: 100vh; /* Full height of the viewport */
+    padding: 20px;
 }
 
 .job-detail-side {
