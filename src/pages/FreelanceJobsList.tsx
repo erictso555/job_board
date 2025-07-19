@@ -11,6 +11,17 @@ interface FreelanceJobsListProps {
 
 const FreelanceJobsList: React.FC<FreelanceJobsListProps> = ({ currentUser, showOnlyCreated }) => {
     const [selectedJob, setSelectedJob] = useState<FreelanceJob | null>(null);
+    const [jobs, setJobs] = useState(freelanceJobs);
+
+    const handleAccept = (jobId: string) => {
+        setJobs(jobs =>
+            jobs.map(job =>
+                job.JobId === jobId
+                    ? { ...job, accepted_user: currentUser?.username }
+                    : job
+            )
+        );
+    };
 
     let jobsToShow = freelanceJobs;
     if (showOnlyCreated && currentUser) {
@@ -36,11 +47,15 @@ const FreelanceJobsList: React.FC<FreelanceJobsListProps> = ({ currentUser, show
                     ))}
                 </ul>
             </div>
-            
                 {selectedJob && (
                     <div className="job-detail-side-container">
                         <div className="job-detail-side">
-                            <JobDetail job={selectedJob} currentUser={currentUser} />
+                            <JobDetail
+                                job={selectedJob}
+                                currentUser={currentUser}
+                                onClose={() => setSelectedJob(null)}
+                                onAccept={handleAccept}
+                            />
                         </div>
                     </div>
                 )}  

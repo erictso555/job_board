@@ -12,6 +12,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+.main-container {
+  width: 100%;
+  margin-top: 46px;
 }
 
 a {

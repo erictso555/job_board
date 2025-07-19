@@ -7,7 +7,6 @@ import  { users, User } from './seed/user';
 import './index.css'
 
 const App: React.FC = () => {
-    //const [identity, setidentity] = useState<'visitor' | 'case_reviewer' | 'case_creator'>('visitor');
     const [user, setUser] = useState<User | null>(null);
 
     const navigate = useNavigate();
@@ -37,22 +36,24 @@ const App: React.FC = () => {
     };
 
     return (
+        console.log('Current user:', user), 
         <div className="App">
             <Menu userType={user?.identity || null} onLogin={() => {}} onLogout={handleLogout} />
-            <Routes>
-                <Route path="/" element={<FreelanceJobsList />} />
-                <Route path="/login" element={<Login onLogin={handleLogin} />} />
-                <Route
-                    path="/created-jobs"    
-                    element={
-                        user
-                            ? <FreelanceJobsList currentUser={user} showOnlyCreated />
-                            : <div>Please log in to view your created jobs.</div>
-                    }
-                />
-            <Route path="/accepted-jobs"/>
-            </Routes>
-            
+            <div className="main-container">
+                <Routes>
+                    <Route path="/" element={user ? <FreelanceJobsList currentUser={user} /> : <Login onLogin={handleLogin} />} />
+                    <Route path="/login" element={<Login onLogin={handleLogin} />} />
+                    <Route
+                        path="/created-jobs"    
+                        element={
+                            user
+                                ? <FreelanceJobsList currentUser={user} showOnlyCreated />
+                                : <div>Please log in to view your created jobs.</div>
+                        }
+                    />
+                <Route path="/accepted-jobs"/>
+                </Routes>
+            </div>
         </div>
     );
 };

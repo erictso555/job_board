@@ -27,7 +27,7 @@ const Login: React.FC<{ onLogin: (username: string, password: string) => void}> 
         }
     }, []);
 
-        const handleUsernameFocus = () => {
+    const handleUsernameFocus = () => {
         setFilteredUsernames(usernames);
         setShowSuggestions(true);
     };
