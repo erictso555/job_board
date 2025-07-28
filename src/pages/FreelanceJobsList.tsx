@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../store/store'; 
 import JobDetail from '../component/JobDetail';
 
+
 interface FreelanceJobsListProps {
     showOnlyCreated?: boolean;
 }
@@ -12,11 +13,24 @@ interface FreelanceJobsListProps {
 const FreelanceJobsList: React.FC<FreelanceJobsListProps> = ({ showOnlyCreated }) => {
     const user = useSelector((state: RootState) => state.user.user);
     const [selectedJob, setSelectedJob] = useState<FreelanceJob | null>(null);
+    const [jobs, setJobs] = useState<FreelanceJob[]>(freelanceJobs);
 
-    const tryfreelanceJobs = async (): Promise<FreelanceJob[]> => {
-            return await fetch('http://localhost:3000/api/freelanceJobs')
-                .then(response => response.json() as unknown as FreelanceJob[]);
-    };
+    async function test() {
+        fetch('http://localhost:3000/api/freelanceJobs')
+            .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json() as unknown as FreelanceJob[];
+            })
+            .then(data => {
+                setJobs(data);
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+            });
+        }
+        
 
     const handleAccept = (jobId: string) => {
         if (!user) return;
@@ -35,9 +49,7 @@ const FreelanceJobsList: React.FC<FreelanceJobsListProps> = ({ showOnlyCreated }
         );
     }
 
-
     return (
-        console.log(tryfreelanceJobs()),
     <div>
         <div className="job-list-main-container">
             <div className="job-list-container">
@@ -52,13 +64,7 @@ const FreelanceJobsList: React.FC<FreelanceJobsListProps> = ({ showOnlyCreated }
                             <p>{job.short_description}</p>
                         </li>
                     ))}
-                    {/* {tryfreelanceJobs().map((job, index) => (
-                        <li key={index} onClick={() => setSelectedJob(job)} style={{ cursor: "pointer" }}>
-                            <h2>{job.freelance_job}</h2>
-                            <p><strong>Requested by:</strong> {job.requested_by}</p>
-                            <p>{job.short_description}</p>
-                        </li>
-                    ))} */}
+                    
                 </ul>
             </div>
                 {selectedJob && (
