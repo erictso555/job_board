@@ -1,36 +1,43 @@
 import React, { useState } from 'react';
-import { freelanceJobs, FreelanceJob } from '../seed/freelanceJobs';
-import '../css/FreelanceJobsList.css'; 
-import { User } from '../seed/user';
+import { freelanceJobs, FreelanceJob, setJobsAccepted } from '../seed/freelanceJobs';
+import '../css/FreelanceJobsList.css';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/store'; 
 import JobDetail from '../component/JobDetail';
 
 interface FreelanceJobsListProps {
-    currentUser?: User;
     showOnlyCreated?: boolean;
 }
 
-const FreelanceJobsList: React.FC<FreelanceJobsListProps> = ({ currentUser, showOnlyCreated }) => {
+const FreelanceJobsList: React.FC<FreelanceJobsListProps> = ({ showOnlyCreated }) => {
+    const user = useSelector((state: RootState) => state.user.user);
     const [selectedJob, setSelectedJob] = useState<FreelanceJob | null>(null);
-    const [jobs, setJobs] = useState(freelanceJobs);
+
+    const tryfreelanceJobs = async (): Promise<FreelanceJob[]> => {
+            return await fetch('http://localhost:3000/api/freelanceJobs')
+                .then(response => response.json() as unknown as FreelanceJob[]);
+    };
 
     const handleAccept = (jobId: string) => {
-        setJobs(jobs =>
-            jobs.map(job =>
-                job.JobId === jobId
-                    ? { ...job, accepted_user: currentUser?.username }
-                    : job
-            )
-        );
+        if (!user) return;
+        
+        const jobIndex = freelanceJobs.findIndex(job => job.JobId === jobId);
+        if (jobIndex !== -1) {
+            console.log(setJobsAccepted(jobId, user.username));
+            setSelectedJob({ ...freelanceJobs[jobIndex] });
+        }
     };
 
     let jobsToShow = freelanceJobs;
-    if (showOnlyCreated && currentUser) {
-        jobsToShow = freelanceJobs.filter(
-            job => job.requested_user === currentUser.username
+    if (showOnlyCreated && user) {
+        jobsToShow = jobsToShow.filter(
+            job => job.requested_user === user.username
         );
     }
 
+
     return (
+        console.log(tryfreelanceJobs()),
     <div>
         <div className="job-list-main-container">
             <div className="job-list-container">
@@ -45,6 +52,13 @@ const FreelanceJobsList: React.FC<FreelanceJobsListProps> = ({ currentUser, show
                             <p>{job.short_description}</p>
                         </li>
                     ))}
+                    {/* {tryfreelanceJobs().map((job, index) => (
+                        <li key={index} onClick={() => setSelectedJob(job)} style={{ cursor: "pointer" }}>
+                            <h2>{job.freelance_job}</h2>
+                            <p><strong>Requested by:</strong> {job.requested_by}</p>
+                            <p>{job.short_description}</p>
+                        </li>
+                    ))} */}
                 </ul>
             </div>
                 {selectedJob && (
@@ -52,7 +66,6 @@ const FreelanceJobsList: React.FC<FreelanceJobsListProps> = ({ currentUser, show
                         <div className="job-detail-side">
                             <JobDetail
                                 job={selectedJob}
-                                currentUser={currentUser}
                                 onClose={() => setSelectedJob(null)}
                                 onAccept={handleAccept}
                             />

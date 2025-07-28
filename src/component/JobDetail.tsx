@@ -1,6 +1,8 @@
 import React from 'react';
 import { FreelanceJob } from '../seed/freelanceJobs';
 import { User } from '../seed/user';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/store'; 
 import '../css/FreelanceJobsList.css';
 
 interface JobDetailProps {
@@ -10,12 +12,14 @@ interface JobDetailProps {
     onAccept?: (jobId: string) => void; 
 }
 
-const JobDetail: React.FC<JobDetailProps> = ({ job, currentUser, onClose, onAccept }) => {
-    const isRequestedUser = currentUser?.username === job.requested_user;
-    const isCaseReviewer = currentUser?.identity === "case_reviewer";
+const JobDetail: React.FC<JobDetailProps> = ({ job, onClose, onAccept }) => {
+    const user = useSelector((state: RootState) => state.user.user);
+    const isRequestedUser = user?.username === job.requested_user;
+    const isCaseReviewer = user?.identity === "case_reviewer";
     const isAccepted = !!job.accepted_user;
 
     return (
+        console.log("currentUser:", user),
         <div className="job-detail-container" style={{ position: "relative" }}>
             {onClose && (
                 <button

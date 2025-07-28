@@ -91,3 +91,17 @@ export const freelanceJobs: FreelanceJob[] = [
         requested_user: "case_creator1"
     }
 ];
+
+export const setJobsAccepted = (jobId: string, username: string) => {
+    const jobIndex = freelanceJobs.findIndex(job => job.JobId === jobId);
+    if (jobIndex !== -1) {
+        freelanceJobs[jobIndex].accepted_user = username;
+        freelanceJobs[jobIndex].accepted = true;
+        
+        console.log(freelanceJobs);
+
+        //fs.writeFileSync('./freelanceJobs.json', JSON.stringify(freelanceJobs, null, 2));
+        return true;
+    }
+    return false
+};
